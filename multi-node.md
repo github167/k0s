@@ -14,20 +14,6 @@ cat > /etc/systemd/system/k0scontroller.service.d/http-proxy.conf << EOF
 Environment=CONTAINERD_HTTPS_PROXY='http://example.com'
 EOF
 ```
-Install single-node
-```
-k0s install controller --single
-k0s start
-k0s status
-k0s kubectl get nodes
-```
-
-Uninstall single-node
-```
-k0s stop
-k0s reset
-```
-
 Install Controller in server1
 ```
 mkdir -p /etc/k0s
