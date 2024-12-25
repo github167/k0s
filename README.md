@@ -128,3 +128,7 @@ EOF
 
 curl localhost:32055
 ```
+Export Admin's Kubeconfig file
+```
+k0s kubeconfig admin > ~/.kube/config
+```
