@@ -40,7 +40,7 @@ journalctl -u k0sworker
 Create pod for testing
 ```
 k0s kc get pod --all-namespaces
-cat << EOF > deploy.yaml
+k0s kc apply -f - << EOF
 kind: Service
 apiVersion: v1
 metadata:
@@ -128,9 +128,6 @@ spec:
       maxUnavailable: 25%
   paused: false
 EOF
-
-k0s kc apply -f deploy.yaml
-
 
 #k0s kc create deployment bootcamp --image=docker.io/jocatalin/kubernetes-bootcamp:v1 --port=8080
 #k0s kc create deployment bootcamp --image=containous/whoami --port=8080
