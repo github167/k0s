@@ -120,6 +120,7 @@ spec:
   paused: false
 EOF
 
+#kubectl wait — for=condition=ready — timeout=30s pod/$(kubectl get pod -l app=name -o jsonpath=”{.items[0].metadata.name}”)
 #k0s kc create deployment bootcamp --image=docker.io/jocatalin/kubernetes-bootcamp:v1 --port=8080
 #k0s kc create deployment bootcamp --image=containous/whoami --port=8080
 #k0s kc create deployment bootcamp --image=busybox --port=8080 -- sleep 3600
