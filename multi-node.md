@@ -1,34 +1,44 @@
 # k0s install
-Installation url https://docs.k0sproject.io/stable/install/
 
-Download
-```
-export http_proxy='http://example.com'
-export https_proxy='http://example.com'
-export no_proxy="localhost,127.0.0.1,172.30.236.179"
-curl --proto '=https' --tlsv1.2 -sSf https://get.k0s.sh | sh
+              mountPath: /tmp/podinfo
+            - name: test-volume
+              mountPath: /tmp/hostpath
 
-mkdir -p /etc/systemd/system/k0scontroller.service.d
-cat > /etc/systemd/system/k0scontroller.service.d/http-proxy.conf << EOF
-[Service]
-Environment=CONTAINERD_HTTPS_PROXY='http://example.com'
+      volumes:      
+        - name: podinfo
+          downwardAPI:
+            items:
+              - path: labels
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.labels
+              - path: annotations
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.annotations
+            defaultMode: 420
+        - name: test-volume
+          hostPath:
+            path: /root
+            type: DirectoryOrCreate			
+      imagePullSecrets: []
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  paused: false
 EOF
-```
-Install single-node
-```
-k0s install controller --single
-k0s start
-k0s status
-k0s kubectl get nodes
-```
 
-Uninstall single-node
-```
-k0s stop
-k0s reset
-```
-
-Install Controller in server1
+k0s kc apply -f deploy.yaml
 
 
+#k0s kc create deployment bootcamp --image=docker.io/jocatalin/kubernetes-bootcamp:v1 --port=8080
+#k0s kc create deployment bootcamp --image=containous/whoami --port=8080
+#k0s kc create deployment bootcamp --image=busybox --port=8080 -- sleep 3600
+#k0s kc expose deployment/bootcamp --type="NodePort" --port=8080
+#k0s kc patch svc/bootcamp --type='json' --patch='[{"op":"replace", "path":"/spec/ports/0/nodePort", "value":32055}]'
+
+curl localhost:32055
+```
 
