@@ -124,8 +124,8 @@ EOF
 #k0s kc create deployment bootcamp --image=containous/whoami --port=8080
 #k0s kc create deployment bootcamp --image=busybox --port=8080 -- sleep 3600
 #k0s kc expose deployment/bootcamp --type="NodePort" --port=8080
-#k0s kc patch svc/bootcamp --type='json' --patch='[{"op":"replace", "path":"/spec/ports/0/nodePort", "value":32055}]'
 
+k0s kc patch svc/bootcamp-svc --type='json' --patch='[{"op":"replace", "path":"/spec/ports/0/nodePort", "value":32055}]'
 curl localhost:32055
 ```
 Export Admin's Kubeconfig file
