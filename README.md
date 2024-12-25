@@ -28,33 +28,10 @@ k0s stop
 k0s reset
 ```
 
-Install Controller in server1
-```
-mkdir -p /etc/k0s
-k0s config create > /etc/k0s/k0s.yaml
-k0s install controller -c /etc/k0s/k0s.yaml
-k0s start
-k0s status
-journalctl -u k0controller
-
-k0s token create --role=worker #copy to clipboard
-
-```
-
-Install Worker in server2
-```
-# create tokenfile by copying the token string from controller
-# vi tokenfile, paste the token string
-k0s install worker --token-file /root/tokenfile
-k0s start
-k0s status
-journalctl -u k0sworker
-```
-
 Create pod for testing
 ```
 k0s kc get pod --all-namespaces
-cat << EOF > deploy.yaml
+k0s kc apply -f - << EOF
 kind: Service
 apiVersion: v1
 metadata:
@@ -142,9 +119,6 @@ spec:
       maxUnavailable: 25%
   paused: false
 EOF
-
-k0s kc apply -f deploy.yaml
-
 
 #k0s kc create deployment bootcamp --image=docker.io/jocatalin/kubernetes-bootcamp:v1 --port=8080
 #k0s kc create deployment bootcamp --image=containous/whoami --port=8080
