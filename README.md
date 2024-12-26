@@ -13,6 +13,7 @@ cat > /etc/systemd/system/k0scontroller.service.d/http-proxy.conf << EOF
 [Service]
 Environment=CONTAINERD_HTTPS_PROXY='http://example.com'
 EOF
+
 ```
 Install single-node
 ```
@@ -20,12 +21,14 @@ k0s install controller --single
 k0s start
 k0s status
 k0s kubectl get nodes
+
 ```
 
 Uninstall single-node
 ```
 k0s stop
 k0s reset
+
 ```
 
 Create pod for testing
@@ -128,6 +131,7 @@ EOF
 kubectl wait --for=condition=ready --timeout=30s pod/$(kubectl get pod -l app=bootcamp -o jsonpath="{.items[0].metadata.name}")
 k0s kc patch svc/bootcamp-svc --type='json' --patch='[{"op":"replace", "path":"/spec/ports/0/nodePort", "value":32055}]'
 curl localhost:32055
+
 ```
 Export Admin's Kubeconfig file
 ```
