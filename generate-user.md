@@ -1,5 +1,5 @@
 Create user in k0s (1)
-'''
+```
 openssl genrsa -out user1.key 2048
 openssl req -new -key user1.key -out user1.csr  -subj "/CN=user1"
 
