@@ -125,7 +125,7 @@ EOF
 #k0s kc create deployment bootcamp --image=busybox --port=8080 -- sleep 3600
 #k0s kc expose deployment/bootcamp --type="NodePort" --port=8080
 
-kubectl wait — for=condition=ready — timeout=30s pod/$(kubectl get pod -l app=bootcamp -o jsonpath=”{.items[0].metadata.name}”)
+kubectl wait --for=condition=ready --timeout=30s pod/$(kubectl get pod -l app=bootcamp -o jsonpath="{.items[0].metadata.name}")
 k0s kc patch svc/bootcamp-svc --type='json' --patch='[{"op":"replace", "path":"/spec/ports/0/nodePort", "value":32055}]'
 curl localhost:32055
 ```
