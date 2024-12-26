@@ -1,4 +1,4 @@
-# k0s install
+# k0s install (Single-node)
 Installation url https://docs.k0sproject.io/stable/install/
 
 Download
