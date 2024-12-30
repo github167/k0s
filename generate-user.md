@@ -1,4 +1,19 @@
-Create user in k0s (1)
+Create system:masters user in k0s (1)
+```
+openssl genrsa -out user1.key 2048
+openssl req -new -key user1.key -out user1.csr  -subj "/O=system:masters/CN=user1"
+
+openssl x509 -req -in user1.csr -CA /var/lib/k0s/pki/ca.crt -CAkey /var/lib/k0s/pki/ca.key -CAcreateserial -out user1.crt -days 500
+#openssl x509 --text --in user1.crt |grep "Subject: "
+
+kubectl config set-credentials user1 --client-certificate=/root/user1.crt --client-key=user1.key
+kubectl config set-context user1-context --cluster=local --namespace=default --user=user1
+kubectl config use-context user1-context
+
+```
+
+Create normal user in k0s (1)
+
 ```
 openssl genrsa -out user1.key 2048
 openssl req -new -key user1.key -out user1.csr  -subj "/CN=user1"
@@ -7,6 +22,7 @@ openssl x509 -req -in user1.csr -CA /var/lib/k0s/pki/ca.crt -CAkey /var/lib/k0s/
 
 kubectl config set-credentials user1 --client-certificate=/root/user1.crt --client-key=user1.key
 kubectl config set-context user1-context --cluster=local --namespace=default --user=user1
+kubectl config use-context user1-context
 
 cat << EOF | k0s kc apply -f -
 kind: Role
