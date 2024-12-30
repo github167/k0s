@@ -1,4 +1,4 @@
-Create system:masters user in k0s (1)
+Create system:masters user
 ```
 openssl genrsa -out user1.key 2048
 openssl req -new -key user1.key -out user1.csr -subj "/O=system:masters/CN=user1"
@@ -12,7 +12,7 @@ kubectl config use-context user1-context
 
 ```
 
-Create x509 normal user in k0s (1)
+Create normal user and apply RBAC
 
 ```
 openssl genrsa -out user2.key 2048
@@ -54,7 +54,7 @@ EOF
 
 ```
 
-Create x509 normal user in k0s (2)
+Create x509 normal user
 ```
 openssl genpkey -out john.key -algorithm Ed25519
 openssl req -new -key john.key -out john.csr -subj "/CN=john"
