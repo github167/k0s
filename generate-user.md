@@ -8,7 +8,7 @@ openssl x509 -req -in user1.csr -CA /var/lib/k0s/pki/ca.crt -CAkey /var/lib/k0s/
 
 kubectl config set-credentials user1 --client-certificate=user1.crt --client-key=user1.key
 kubectl config set-context user1-context --cluster=local --namespace=default --user=user1
-kubectl config use-context user1-context
+#kubectl config use-context user1-context
 
 ```
 
@@ -19,8 +19,6 @@ openssl genrsa -out user2.key 2048
 openssl req -new -key user2.key -out user2.csr -subj "/CN=user2"
 
 openssl x509 -req -in user2.csr -CA /var/lib/k0s/pki/ca.crt -CAkey /var/lib/k0s/pki/ca.key -CAcreateserial -out user2.crt -days 500
-
-kubectl config use-context Default
 
 cat << EOF | k0s kc apply -f -
 kind: Role
@@ -52,7 +50,7 @@ EOF
 
 kubectl config set-credentials user2 --client-certificate=user2.crt --client-key=user2.key
 kubectl config set-context user2-context --cluster=local --namespace=default --user=user2
-kubectl config use-context user2-context
+#kubectl config use-context user2-context
 
 ```
 
