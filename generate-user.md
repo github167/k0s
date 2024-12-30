@@ -12,24 +12,24 @@ kubectl config use-context user1-context
 
 ```
 
-Create normal user in k0s (1)
+Create x509 normal user in k0s (1)
 
 ```
-openssl genrsa -out user1.key 2048
-openssl req -new -key user1.key -out user1.csr  -subj "/CN=user1"
+openssl genrsa -out user2.key 2048
+openssl req -new -key user2.key -out user2.csr  -subj "/CN=user2"
 
-openssl x509 -req -in user1.csr -CA /var/lib/k0s/pki/ca.crt -CAkey /var/lib/k0s/pki/ca.key -CAcreateserial -out user1.crt -days 500
+openssl x509 -req -in user2.csr -CA /var/lib/k0s/pki/ca.crt -CAkey /var/lib/k0s/pki/ca.key -CAcreateserial -out user2.crt -days 500
 
-kubectl config set-credentials user1 --client-certificate=/root/user1.crt --client-key=user1.key
-kubectl config set-context user1-context --cluster=local --namespace=default --user=user1
-kubectl config use-context user1-context
+kubectl config set-credentials user2 --client-certificate=/root/user2.crt --client-key=user2.key
+kubectl config set-context user2-context --cluster=local --namespace=default --user=user2
+kubectl config use-context user2-context
 
 cat << EOF | k0s kc apply -f -
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   namespace: default
-  name: user1-role
+  name: user2-role
 rules:
 - apiGroups: ["", "extensions", "apps"]
   resources: ["deployments", "pods", "services"]
@@ -40,21 +40,21 @@ cat << EOF | k0s kc apply -f -
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: user1-rolebinding
+  name: user2-rolebinding
   namespace: default
 subjects:
 - kind: User
-  name: user1
+  name: user2
   apiGroup: ""
 roleRef:
   kind: Role
-  name: user1-role
+  name: user2-role
   apiGroup: ""
 EOF
 
 ```
 
-Create user in k0s (2)
+Create x509 normal user in k0s (2)
 ```
 openssl genpkey -out john.key -algorithm Ed25519
 openssl req -new -key john.key -out john.csr -subj "/CN=john"
