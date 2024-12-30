@@ -20,6 +20,8 @@ openssl req -new -key user2.key -out user2.csr -subj "/CN=user2"
 
 openssl x509 -req -in user2.csr -CA /var/lib/k0s/pki/ca.crt -CAkey /var/lib/k0s/pki/ca.key -CAcreateserial -out user2.crt -days 500
 
+kubectl config use-context Default
+
 cat << EOF | k0s kc apply -f -
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
@@ -58,6 +60,8 @@ Create x509 normal user
 ```
 openssl genpkey -out user3.key -algorithm Ed25519
 openssl req -new -key user3.key -out user3.csr -subj "/CN=user3"
+
+kubectl config use-context Default
 
 cat <<EOF | kubectl apply -f -
 apiVersion: certificates.k8s.io/v1
