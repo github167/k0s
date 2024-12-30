@@ -59,7 +59,6 @@ Create x509 normal user
 openssl genpkey -out user3.key -algorithm Ed25519
 openssl req -new -key user3.key -out user3.csr -subj "/CN=user3"
 
-kubectl config use-context Default
 
 cat <<EOF | kubectl apply -f -
 apiVersion: certificates.k8s.io/v1
