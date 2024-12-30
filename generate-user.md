@@ -6,7 +6,7 @@ openssl req -new -key user1.key -out user1.csr -subj "/O=system:masters/CN=user1
 openssl x509 -req -in user1.csr -CA /var/lib/k0s/pki/ca.crt -CAkey /var/lib/k0s/pki/ca.key -CAcreateserial -out user1.crt -days 500
 #openssl x509 --text --in user1.crt |grep "Subject: "
 
-kubectl config set-credentials user1 --client-certificate=/root/user1.crt --client-key=user1.key
+kubectl config set-credentials user1 --client-certificate=user1.crt --client-key=user1.key
 kubectl config set-context user1-context --cluster=local --namespace=default --user=user1
 kubectl config use-context user1-context
 
@@ -20,7 +20,7 @@ openssl req -new -key user2.key -out user2.csr  -subj "/CN=user2"
 
 openssl x509 -req -in user2.csr -CA /var/lib/k0s/pki/ca.crt -CAkey /var/lib/k0s/pki/ca.key -CAcreateserial -out user2.crt -days 500
 
-kubectl config set-credentials user2 --client-certificate=/root/user2.crt --client-key=user2.key
+kubectl config set-credentials user2 --client-certificate=user2.crt --client-key=user2.key
 kubectl config set-context user2-context --cluster=local --namespace=default --user=user2
 kubectl config use-context user2-context
 
