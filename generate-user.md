@@ -56,31 +56,32 @@ EOF
 
 Create x509 normal user
 ```
-openssl genpkey -out john.key -algorithm Ed25519
-openssl req -new -key john.key -out john.csr -subj "/CN=john"
+openssl genpkey -out user3.key -algorithm Ed25519
+openssl req -new -key user3.key -out user3.csr -subj "/CN=user3"
 
 cat <<EOF | kubectl apply -f -
 apiVersion: certificates.k8s.io/v1
 kind: CertificateSigningRequest
 metadata:
-  name: john
+  name: user3
 spec:
-  request: $(cat john.csr | base64 | tr -d "\n")
+  request: $(cat user3.csr | base64 | tr -d "\n")
   signerName: kubernetes.io/kube-apiserver-client
   expirationSeconds: 86400  # one day
   usages:
   - client auth
 EOF
 
-kubectl certificate approve john
-kubectl get csr/john -o jsonpath="{.status.certificate}" | base64 -d > john.crt
-kubectl delete csr john
-kubectl config set-credentials john --client-certificate=/root/john.crt --client-key=john.key
-kubectl config set-context john-context --cluster=local --namespace=default --user=john
-#kubectl create clusterrolebinding john-view --clusterrole=view --user=john
+kubectl certificate approve user3
+kubectl get csr/user3 -o jsonpath="{.status.certificate}" | base64 -d > user3.crt
+kubectl delete csr user3
+kubectl config set-credentials user3 --client-certificate=/root/user3.crt --client-key=user3.key
+kubectl config set-context user3-context --cluster=local --namespace=default --user=user3
+#kubectl create clusterrolebinding user3-view --clusterrole=view --user=user3
 kubectl create clusterrole pod-manager --verb=create,list,get,delete --resource=pods
-kubectl create clusterrolebinding c-john-pod-manager --clusterrole=pod-manager --user=john
-kubectl auth can-i create deployments --namespace=default --as=john
-kubectl auth can-i create secrets --namespace=default --as=john
-kubectl auth can-i get pods --namespace=default --as=john
+kubectl create clusterrolebinding c-user3-pod-manager --clusterrole=pod-manager --user=user3
+kubectl auth can-i create deployments --namespace=default --as=user3
+kubectl auth can-i create secrets --namespace=default --as=user3
+kubectl auth can-i get pods --namespace=default --as=user3
+
 '''
