@@ -16,7 +16,7 @@ Create normal user and apply RBAC
 
 ```
 openssl genrsa -out user2.key 2048
-openssl req -new -key user2.key -out user2.csr  -subj "/CN=user2"
+openssl req -new -key user2.key -out user2.csr -subj "/CN=user2"
 
 openssl x509 -req -in user2.csr -CA /var/lib/k0s/pki/ca.crt -CAkey /var/lib/k0s/pki/ca.key -CAcreateserial -out user2.crt -days 500
 
