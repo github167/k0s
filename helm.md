@@ -94,4 +94,3 @@ helm upgrade --install my-pacman pacman/pacman --version 0.1.20 --set service.ty
 
 ```
 
-kubectl expose deployment/my-bodgeit --type="NodePort" --name abc;kubectl patch svc/abc --type='json' --patch='[{"op":"replace", "path":"/spec/ports/0/nodePort", "value":32055}]'
