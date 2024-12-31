@@ -1,8 +1,4 @@
-update clap
-mef: tsr for new NAS submitted, wait for the NAS
-hkpccweb: apply dmz ocp4
-
-update db MSSQL 8.0.36 from Angus Tsui "[Call for return] MySQL patching from 8.0.27 to 8.0.36" Dec 04 18:31
+helm chart hub: https://artifacthub.io/
 
 ########## rabbit-mq
 helm install my-rabbitmq bitnami/rabbitmq --version 15.2.0 --set persistence.enabled=false
