@@ -1,6 +1,6 @@
 helm chart hub: https://artifacthub.io/
 
-rabbit-mq: https://artifacthub.io/packages/helm/bitnami/rabbitmq
+[rabbit-mq](https://artifacthub.io/packages/helm/bitnami/rabbitmq)
 ```
 ########## rabbit-mq
 helm repo add bitnami https://charts.bitnami.com/bitnami
