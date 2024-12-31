@@ -29,7 +29,7 @@ k0s token create --role=worker > tokenfile
 
 Install Worker in server2
 ```
-ssh root@<server1 ip>:tokenfile tokenfile
+scp root@<server1 ip>:tokenfile tokenfile
 k0s install worker --token-file /root/tokenfile
 k0s start
 k0s status
