@@ -87,7 +87,11 @@ helm upgrade --install my-bodgeit securecodebox/bodgeit --version 4.11.0 --set s
 
 ```
 
-
+[pacman](https://artifacthub.io/packages/helm/pacman/pacman)
+```
+helm repo add pacman https://shuguet.github.io/pacman/
 helm upgrade --install my-pacman pacman/pacman --version 0.1.20 --set service.type=NodePort,mongodb.enabled=false
+
+```
 
 kubectl expose deployment/my-bodgeit --type="NodePort" --name abc;kubectl patch svc/abc --type='json' --patch='[{"op":"replace", "path":"/spec/ports/0/nodePort", "value":32055}]'
