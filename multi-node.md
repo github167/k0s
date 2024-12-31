@@ -23,14 +23,13 @@ k0s start
 k0s status
 journalctl -u k0controller
 
-k0s token create --role=worker #copy to clipboard
+k0s token create --role=worker > tokenfile
 
 ```
 
 Install Worker in server2
 ```
-# create tokenfile by copying the token string from controller
-# vi tokenfile, paste the token string
+ssh root@<server1 ip>:tokenfile tokenfile
 k0s install worker --token-file /root/tokenfile
 k0s start
 k0s status
