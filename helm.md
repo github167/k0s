@@ -73,14 +73,19 @@ kubectl -n default create token my-skooner
 
 ```
 
-########## web site demo for pod usage
+[web site demo for pod usage](https://artifacthub.io/packages/helm/fairwinds-incubator/basic-demo)
+```
 helm repo add fairwinds-incubator https://charts.fairwinds.com/incubator
 helm upgrade --install my-basic-demo fairwinds-incubator/basic-demo --version 1.0.0 --set hpa.enabled=false,service.type=NodePort
 
-########## simple plain web site demo for vulnerability
+```
+[simple plain web site demo for vulnerability](https://artifacthub.io/packages/helm/securecodebox/bodgeit)
+```
 helm repo add securecodebox https://charts.securecodebox.io/
 helm upgrade --install my-bodgeit securecodebox/bodgeit --version 4.11.0 --set service.type=NodePort
 ## http://$NODE_IP:$NODE_PORT/bodgeit
+
+```
 
 
 helm upgrade --install my-pacman pacman/pacman --version 0.1.20 --set service.type=NodePort,mongodb.enabled=false
