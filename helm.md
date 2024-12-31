@@ -57,15 +57,21 @@ kubectl -n default create token my-headlamp
 
 ```
 
-########## juice-shop
+[juice-shop](https://artifacthub.io/packages/helm/securecodebox/juice-shop)
+```
 helm repo add securecodebox https://charts.securecodebox.io/
 helm upgrade --install my-juice-shop securecodebox/juice-shop --version 4.11.0 --set service.type=NodePort,service.port=4321
 # modify the livenessProbe.periodSeconds to 100 (same as readinessProbe) in deployment
 
-########## skooner - k8s GUI
+```
+
+[skooner - k8s GUI](https://artifacthub.io/packages/helm/christianhuth/skooner)
+```
 helm repo add christianhuth https://charts.christianhuth.de
 helm install my-skooner christianhuth/skooner --version 0.0.11 --set service.type=NodePort
 kubectl -n default create token my-skooner
+
+```
 
 ########## web site demo for pod usage
 helm repo add fairwinds-incubator https://charts.fairwinds.com/incubator
