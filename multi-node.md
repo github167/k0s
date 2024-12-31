@@ -30,6 +30,13 @@ k0s token create --role=worker > tokenfile
 Install Worker in server2
 ```
 scp root@<server1 ip>:tokenfile tokenfile
+
+mkdir -p /etc/systemd/system/k0sworker.service.d
+cat > /etc/systemd/system/k0sworker.service.d/http-proxy.conf << EOF
+[Service]
+Environment=CONTAINERD_HTTPS_PROXY='http://example.com'
+EOF
+
 k0s install worker --token-file /root/tokenfile
 k0s start
 k0s status
