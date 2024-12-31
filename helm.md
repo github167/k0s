@@ -18,9 +18,12 @@ kubectl expose pod/my-jenkins-0 --type="NodePort"
 
 ```
 
-########## wordpress
+[wordpress](https://artifacthub.io/packages/helm/bitnami/wordpress)
+```
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm upgrade --install my-wordpress bitnami/wordpress --version 24.1.4 --set persistence.enabled=false,mariadb.primary.persistence.enabled=false,service.type=NodePort,wordpressUsername=admin,wordpressPassword=admin
+
+```
 
 ########## postgresql admin
 helm install my-pgadmin4 runix/pgadmin4 --version 1.33.3 --set persistentVolume.enabled=false,service.type=NodePort,env.email=admin@a.b,env.password=admin
