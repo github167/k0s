@@ -33,13 +33,20 @@ kubectl expose pod/my-pgadmin4-96fdcbd89-tvrn5 --type="NodePort"
 
 ```
 
-########## admin (db web admin)
+[admin (db web admin)](https://artifacthub.io/packages/helm/cetic/adminer)
+```
 helm repo add cetic https://cetic.github.io/helm-charts
 helm install my-adminer cetic/adminer --version 0.2.1
 
-########## helm dashboard
+```
+
+[helm dashboard](https://artifacthub.io/packages/helm/komodor/helm-dashboard)
+```
+helm repo add komodor https://helm-charts.komodor.io
 helm install my-helm-dashboard komodor/helm-dashboard --version 2.0.3 --set dashboard.persistence.enabled=false
 kubectl expose --type="NodePort" pod/my-helm-dashboard-9bdd5dc44-nh8br
+
+```
 
 ########## Kubernetes Dashboard
 helm repo add headlamp https://headlamp-k8s.github.io/headlamp/
