@@ -10,7 +10,6 @@ kubectl expose pod/my-rabbitmq-0 --type="NodePort"
 
 ```
 
-
 [jenkins](https://artifacthub.io/packages/helm/jenkinsci/jenkins)
 ```
 helm repo add jenkinsci https://charts.jenkins.io/
