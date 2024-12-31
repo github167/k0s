@@ -1,6 +1,6 @@
 helm chart hub: https://artifacthub.io/
 
-[rabbit-mq](https://artifacthub.io/packages/helm/bitnami/rabbitmq)
+1. [rabbit-mq](https://artifacthub.io/packages/helm/bitnami/rabbitmq)
 ```
 ########## rabbit-mq
 helm repo add bitnami https://charts.bitnami.com/bitnami
@@ -8,9 +8,15 @@ helm install my-rabbitmq bitnami/rabbitmq --version 15.2.0 --set persistence.ena
 kubectl expose pod/my-rabbitmq-0 --type="NodePort"
 
 ```
-########## jenkins
+
+
+[jenkins](https://artifacthub.io/packages/helm/jenkinsci/jenkins)
+```
+helm repo add jenkinsci https://charts.jenkins.io/
 helm install my-jenkins jenkinsci/jenkins --version 5.7.21 --set persistence.enabled=false,controller.installPlugins=false
 kubectl expose pod/my-jenkins-0 --type="NodePort"
+
+```
 
 ########## wordpress
 helm repo add bitnami https://charts.bitnami.com/bitnami
