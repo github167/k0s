@@ -48,11 +48,14 @@ kubectl expose --type="NodePort" pod/my-helm-dashboard-9bdd5dc44-nh8br
 
 ```
 
-########## Kubernetes Dashboard
+[Kubernetes Dashboard](https://artifacthub.io/packages/helm/headlamp/headlamp)
+```
 helm repo add headlamp https://headlamp-k8s.github.io/headlamp/
 helm install my-headlamp headlamp/headlamp --version 0.27.0 --set persistentVolumeClaim.enabled=false,service.type=NodePort
 kubectl expose --type="NodePort" pod/my-headlamp-7cb69f6cb7-97zh6
 kubectl -n default create token my-headlamp
+
+```
 
 ########## juice-shop
 helm repo add securecodebox https://charts.securecodebox.io/
