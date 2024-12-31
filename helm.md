@@ -1,5 +1,6 @@
 helm chart hub: https://artifacthub.io/
 
+
 1. [rabbit-mq](https://artifacthub.io/packages/helm/bitnami/rabbitmq)
 ```
 ########## rabbit-mq
@@ -10,7 +11,7 @@ kubectl expose pod/my-rabbitmq-0 --type="NodePort"
 ```
 
 
-[jenkins](https://artifacthub.io/packages/helm/jenkinsci/jenkins)
+2. [jenkins](https://artifacthub.io/packages/helm/jenkinsci/jenkins)
 ```
 helm repo add jenkinsci https://charts.jenkins.io/
 helm install my-jenkins jenkinsci/jenkins --version 5.7.21 --set persistence.enabled=false,controller.installPlugins=false
@@ -18,7 +19,7 @@ kubectl expose pod/my-jenkins-0 --type="NodePort"
 
 ```
 
-[wordpress](https://artifacthub.io/packages/helm/bitnami/wordpress)
+3. [wordpress](https://artifacthub.io/packages/helm/bitnami/wordpress)
 ```
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm upgrade --install my-wordpress bitnami/wordpress --version 24.1.4 --set persistence.enabled=false,mariadb.primary.persistence.enabled=false,service.type=NodePort,wordpressUsername=admin,wordpressPassword=admin
