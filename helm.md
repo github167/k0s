@@ -5,8 +5,7 @@ helm chart hub: https://artifacthub.io/
 ```
 ########## rabbit-mq
 helm repo add bitnami https://charts.bitnami.com/bitnami
-helm upgrade --install my-rabbitmq bitnami/rabbitmq --version 15.2.0 --set persistence.enabled=false
-kubectl expose pod/my-rabbitmq-0 --type="NodePort"
+helm upgrade --install my-rabbitmq bitnami/rabbitmq --version 15.2.0 --set persistence.enabled=false,service.type=NodePort
 
 ```
 
