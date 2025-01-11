@@ -28,7 +28,6 @@ helm upgrade --install my-wordpress bitnami/wordpress --version 24.1.4 --set per
 ```
 helm repo add runix https://helm.runix.net/
 helm upgrade --install my-pgadmin4 runix/pgadmin4 --version 1.33.3 --set persistentVolume.enabled=false,service.type=NodePort,env.email=admin@a.b,env.password=admin
-kubectl expose pod/my-pgadmin4-96fdcbd89-tvrn5 --type="NodePort"
 
 ```
 
