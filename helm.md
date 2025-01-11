@@ -12,8 +12,8 @@ helm upgrade --install my-rabbitmq bitnami/rabbitmq --version 15.2.0 --set persi
 [jenkins](https://artifacthub.io/packages/helm/jenkinsci/jenkins)
 ```
 helm repo add jenkinsci https://charts.jenkins.io/
-helm upgrade --install my-jenkins jenkinsci/jenkins --version 5.7.21 --set persistence.enabled=false,controller.installPlugins=false
-kubectl expose pod/my-jenkins-0 --type="NodePort"
+helm upgrade --install my-jenkins jenkinsci/jenkins --version 5.7.21 --set persistence.enabled=false,controller.installPlugins=false,controller.agentListenerServiceType=NodePort
+#kubectl expose pod/my-jenkins-0 --type="NodePort"
 
 ```
 
