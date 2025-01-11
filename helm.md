@@ -41,8 +41,7 @@ helm upgrade --install my-adminer cetic/adminer --version 0.2.1
 [helm dashboard](https://artifacthub.io/packages/helm/komodor/helm-dashboard)
 ```
 helm repo add komodor https://helm-charts.komodor.io
-helm upgrade --install my-helm-dashboard komodor/helm-dashboard --version 2.0.3 --set dashboard.persistence.enabled=false
-kubectl expose --type="NodePort" pod/my-helm-dashboard-9bdd5dc44-nh8br
+helm upgrade --install my-helm-dashboard komodor/helm-dashboard --version 2.0.3 --set dashboard.persistence.enabled=false,service.type=NodePort
 
 ```
 
