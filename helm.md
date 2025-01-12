@@ -82,11 +82,3 @@ helm upgrade --install my-bodgeit securecodebox/bodgeit --version 4.12.0 --set s
 ## http://$NODE_IP:$NODE_PORT/bodgeit
 
 ```
-
-[pacman](https://artifacthub.io/packages/helm/pacman/pacman)
-```
-helm repo add pacman https://shuguet.github.io/pacman/
-helm upgrade --install my-pacman pacman/pacman --version 0.1.20 --set service.type=NodePort,mongodb.enabled=false
-
-```
-
