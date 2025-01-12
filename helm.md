@@ -78,7 +78,7 @@ helm upgrade --install my-basic-demo fairwinds-incubator/basic-demo --version 1.
 [simple plain web site demo for vulnerability](https://artifacthub.io/packages/helm/securecodebox/bodgeit)
 ```
 helm repo add securecodebox https://charts.securecodebox.io/
-helm upgrade --install my-bodgeit securecodebox/bodgeit --version 4.11.0 --set service.type=NodePort
+helm upgrade --install my-bodgeit securecodebox/bodgeit --version 4.12.0 --set service.type=NodePort
 ## http://$NODE_IP:$NODE_PORT/bodgeit
 
 ```
