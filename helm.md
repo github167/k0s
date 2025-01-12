@@ -64,7 +64,7 @@ helm upgrade --install my-juice-shop securecodebox/juice-shop --version 4.12.0 -
 [skooner - k8s GUI](https://artifacthub.io/packages/helm/christianhuth/skooner)
 ```
 helm repo add christianhuth https://charts.christianhuth.de
-helm upgrade --install my-skooner christianhuth/skooner --version 0.0.11 --set service.type=NodePort
+helm upgrade --install my-skooner christianhuth/skooner --version 0.0.12 --set service.type=NodePort
 kubectl -n default create token my-skooner
 
 ```
