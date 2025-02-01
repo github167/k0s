@@ -3,7 +3,6 @@ helm chart hub: https://artifacthub.io/
 
 [rabbit-mq](https://artifacthub.io/packages/helm/bitnami/rabbitmq)
 ```
-########## rabbit-mq
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm upgrade --install my-rabbitmq bitnami/rabbitmq --version 15.2.2 --set persistence.enabled=false,service.type=NodePort
 
