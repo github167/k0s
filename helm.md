@@ -5,6 +5,9 @@ helm chart hub: https://artifacthub.io/
 ```
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm upgrade --install my-rabbitmq bitnami/rabbitmq --version 15.2.2 --set persistence.enabled=false,service.type=NodePort
+echo "Username      : user"
+echo "Password      : $(kubectl get secret --namespace default my-rabbitmq -o jsonpath="{.data.rabbitmq-password}" | base64 -d)"
+echo "ErLang Cookie : $(kubectl get secret --namespace default my-rabbitmq -o jsonpath="{.data.rabbitmq-erlang-cookie}" | base64 -d)"
 
 ```
 
