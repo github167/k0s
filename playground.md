@@ -48,5 +48,7 @@ spec:
     hostPath:
       path: /root/myapp
 EOF
+# k get pods
+# k exec -it n -- /bin/bash
 
 ```
