@@ -51,4 +51,6 @@ EOF
 #k get pods
 #k exec -it n -- /bin/bash
 
+#apt udpate; apt install vim
+
 ```
