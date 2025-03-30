@@ -17,7 +17,36 @@ kubeadm token create --print-join-command
 
 ```
 
+Deploy nginx to test
 ```
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/application/nginx-app.yaml
+
+```
+or
+```
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: "n"
+  name: "n"
+spec:
+  containers:
+  - command:
+    - sleep
+    - inf
+    image: node
+    name: "n"
+    resources: {}
+    volumeMounts:
+    - mountPath: /myapp
+      name: host-volumes 
+      readOnly: false	  
+  volumes:
+  - name: host-volumes
+    hostPath:
+      path: /root/myapp
+EOF
 
 ```
