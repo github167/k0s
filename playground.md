@@ -1,11 +1,9 @@
 KillerCoda
 
-1. https://killercoda.com/
-2. https://www.emailtick.com/
-
-or
-
-https://labs.play-with-k8s.com/
+1. https://www.emailtick.com
+2. https://killercoda.com
+3. https://kodekloud.com
+4. https://labs.play-with-k8s.com
 
 ```
 #hurnsodmocdecnjqcp@nbmbb.com
