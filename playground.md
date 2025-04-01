@@ -2,7 +2,7 @@ KillerCoda
 
 1. https://www.emailtick.com
 2. https://killercoda.com
-3. https://kodekloud.com
+3. https://kodekloud.com/public-playgrounds
 4. https://labs.play-with-k8s.com
 
 ```
