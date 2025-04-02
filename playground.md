@@ -8,7 +8,7 @@ KillerCoda
 ```
 #hurnsodmocdecnjqcp@nbmbb.com
 kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr 10.5.0.0/16
-rpm -ivh https://github.com/derailed/k9s/releases/download/v0.32.5/k9s_linux_amd64.rpm
+curl https://gist.githubusercontent.com/didhd/57fecbe3090c48272ea3997a54cd2330/raw/946cf17f89a7623da9893fb635e9e13d499f7d68/install_k9s.sh | bash
 curl -sk https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | (export VERIFY_CHECKSUM=false; sh)
 kubectl apply -f https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kubeadm-kuberouter.yaml
 kubeadm token create --print-join-command
