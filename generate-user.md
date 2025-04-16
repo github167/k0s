@@ -76,7 +76,7 @@ EOF
 kubectl certificate approve user3
 kubectl get csr/user3 -o jsonpath="{.status.certificate}" | base64 -d > user3.crt
 kubectl delete csr user3
-kubectl config set-credentials user3 --client-certificate=user3.crt --client-key=user3.key
+kubectl config set-credentials user3 --client-certificate=user3.crt --client-key=user3.key --embed-certs
 kubectl config set-context user3-context --cluster=local --namespace=default --user=user3
 #kubectl create clusterrolebinding user3-view --clusterrole=view --user=user3
 kubectl create clusterrole pod-manager --verb=create,list,get,delete --resource=pods
@@ -85,4 +85,5 @@ kubectl auth can-i create deployments --namespace=default --as=user3
 kubectl auth can-i create secrets --namespace=default --as=user3
 kubectl auth can-i get pods --namespace=default --as=user3
 
-'''
+```
+
