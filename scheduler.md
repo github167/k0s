@@ -1,12 +1,5 @@
 # Create our own pod scheduler
 
-Set kubectl proxy
-
-```
-kubectl proxy &
-
-```
-
 Create pod, with "schedulerName: my-scheduler"
 ```
 kubectl delete deployment myapp
