@@ -63,7 +63,9 @@ done
 
 FINISH
 chmod u+x my-scheduler.sh
+kubectl proxy &; sleep 2
 ./my-scheduler.sh
+kill %"kubectl proxy &"
 
 kubectl get deployment myapp
 
