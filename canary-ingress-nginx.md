@@ -74,8 +74,7 @@ EOF
 ```
 
 ```
-echo "
----
+kubectl apply -f - << EOF 
 # Deployment
 apiVersion: apps/v1
 kind: Deployment
@@ -131,7 +130,7 @@ spec:
     name: http
   selector:
     app: canary
-" | kubectl apply -f -
+EOF
 
 ```
 
