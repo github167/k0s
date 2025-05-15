@@ -162,8 +162,8 @@ kind: Ingress
 metadata:
   name: canary
   annotations:
-    nginx.ingress.kubernetes.io/canary: true
-    nginx.ingress.kubernetes.io/canary-weight: 50
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "50"
 spec:
   ingressClassName: nginx
   rules:
