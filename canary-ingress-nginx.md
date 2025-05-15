@@ -187,7 +187,7 @@ spec:
 
 Test
 ```
-INGRESS_CONTROLLER_IP=$()
+INGRESS_CONTROLLER_IP=$(kubectl -n ingress-nginx get svc ingress-nginx-controller -o jsonpath='{.spec.clusterIP}')
 for i in $(seq 1 10); do curl -s --resolve echo.prod.mydomain.com:80:$INGRESS_CONTROLLER_IP echo.prod.mydomain.com  | grep "Hostname"; done
 
 ```
