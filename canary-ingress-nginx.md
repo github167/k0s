@@ -1,4 +1,4 @@
-Canary deployment using ingress-nginx
+#Canary deployment using ingress-nginx
 
 https://kubernetes.github.io/ingress-nginx/examples/canary/
 
