@@ -136,8 +136,7 @@ EOF
 
 Create two ingress
 ```
-echo "
----
+kubectl apply -f - << EOF
 # Ingress
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -178,7 +177,7 @@ spec:
             name: canary
             port:
               number: 80
-" | kubectl apply -f -
+EOF
 
 ```
 
