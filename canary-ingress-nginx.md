@@ -13,8 +13,7 @@ kubectl get services -n ingress-nginx
 
 Create two deployments
 ```
-echo "
----
+kubectl apply -f - << EOF 
 # Deployment
 apiVersion: apps/v1
 kind: Deployment
@@ -70,7 +69,7 @@ spec:
     name: http
   selector:
     app: production
-" | kubectl apply -f -
+EOF
 
 ```
 
