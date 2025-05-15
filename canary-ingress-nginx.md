@@ -72,6 +72,9 @@ spec:
     app: production
 " | kubectl apply -f -
 
+```
+
+```
 echo "
 ---
 # Deployment
