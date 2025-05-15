@@ -159,11 +159,7 @@ spec:
             name: production
             port:
               number: 80
-" | kubectl apply -f -
-
-echo "
 ---
-# Ingress
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
