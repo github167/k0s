@@ -84,3 +84,8 @@ helm upgrade --install my-bodgeit securecodebox/bodgeit --version 4.12.0 --set s
 ## http://$NODE_IP:$NODE_PORT/bodgeit
 
 ```
+[n8n](https://artifacthub.io/packages/helm/open-8gears/n8n)
+```
+helm upgrade --install my-n8n oci://8gears.container-registry.com/library/n8n --version 1.0.6 --set main.service.type=NodePort
+
+```
