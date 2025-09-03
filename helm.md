@@ -49,8 +49,8 @@ helm upgrade --install my-helm-dashboard komodor/helm-dashboard --version 2.0.3 
 
 [Kubernetes Dashboard](https://artifacthub.io/packages/helm/headlamp/headlamp)
 ```
-helm repo add headlamp https://headlamp-k8s.github.io/headlamp/
-helm upgrade --install my-headlamp headlamp/headlamp --version 0.27.0 --set persistentVolumeClaim.enabled=false,service.type=NodePort
+helm repo add headlamp https://kubernetes-sigs.github.io/headlamp/
+helm install my-headlamp headlamp/headlamp --version 0.35.0 --set persistentVolumeClaim.enabled=false,service.type=NodePort
 kubectl -n default create token my-headlamp
 
 ```
