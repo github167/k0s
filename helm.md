@@ -67,7 +67,7 @@ kubectl -n default create token my-headlamp
 [juice-shop](https://artifacthub.io/packages/helm/securecodebox/juice-shop)
 ```
 helm repo add securecodebox https://charts.securecodebox.io/
-helm upgrade --install my-juice-shop securecodebox/juice-shop --version 4.12.0 --set service.type=NodePort,service.port=4321
+helm upgrade --install my-juice-shop securecodebox/juice-shop --version 0.0.0 --set service.type=NodePort,service.port=4321
 # modify the livenessProbe.periodSeconds to 100 (same as readinessProbe) in deployment
 
 ```
