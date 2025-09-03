@@ -21,6 +21,7 @@ k0s install controller --single
 k0s start
 k0s status
 k0s kubectl get nodes
+k0s kubeconfig admin > ~/.kube/config
 
 ```
 
@@ -133,7 +134,4 @@ k0s kc patch svc/bootcamp-svc --type='json' --patch='[{"op":"replace", "path":"/
 curl localhost:32055
 
 ```
-Export Admin's Kubeconfig file
-```
-k0s kubeconfig admin > ~/.kube/config
-```
+
