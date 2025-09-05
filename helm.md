@@ -10,6 +10,13 @@ chmod 700 get_helm.sh
 helm chart hub: https://artifacthub.io/
 
 
+[helloworld](https://artifacthub.io/packages/helm/crowdsec/helloworld)
+```
+helm repo add crowdsec https://crowdsecurity.github.io/helm-charts
+helm install my-helloworld crowdsec/helloworld --version 0.2.1 --set service.type=NodePort
+```
+
+
 [rabbit-mq](https://artifacthub.io/packages/helm/bitnami/rabbitmq)
 ```
 helm repo add bitnami https://charts.bitnami.com/bitnami
