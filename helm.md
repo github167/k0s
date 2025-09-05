@@ -14,6 +14,7 @@ helm chart hub: https://artifacthub.io/
 ```
 helm repo add crowdsec https://crowdsecurity.github.io/helm-charts
 helm install my-helloworld crowdsec/helloworld --version 0.2.1 --set service.type=NodePort
+
 ```
 
 
